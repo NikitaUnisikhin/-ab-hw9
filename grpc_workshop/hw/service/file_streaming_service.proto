@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package file_transfer;
+
+option go_package = "./;file_transfer";
+
+service FileTransferService {
+  rpc GetFileData (FileName) returns (stream FileData);
+  rpc GetAllFileNames (Empty) returns (stream FileName);
+  rpc GetFileMetaData (FileName) returns (stream FileMetaData);
+}
+
+message FileName {
+  string name = 1;
+}
+
+message FileData {
+  bytes data = 1;
+}
+
+message FileMetaData {
+  string name = 1;
+  int64 size = 2;
+  bool isDir = 3;
+}
+
+message Empty {}
+
