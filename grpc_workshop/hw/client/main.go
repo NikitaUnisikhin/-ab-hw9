@@ -20,6 +20,7 @@ func main() {
 	c := file_transfer.NewFileTransferServiceClient(conn)
 
 	// Read file
+	log.Println("Read file")
 	stream1, err := c.GetFileData(context.Background(), &file_transfer.FileName{Name: "1.txt"})
 	if err != nil {
 		log.Fatalf("Error on stream messages: %v", err)
@@ -39,6 +40,7 @@ func main() {
 	}
 
 	// Get all file names
+	log.Println("Get all file names")
 	stream2, err := c.GetAllFileNames(context.Background(), &file_transfer.Empty{})
 	if err != nil {
 		log.Fatalf("Error on stream messages: %v", err)
@@ -58,6 +60,7 @@ func main() {
 	}
 
 	// Get file metadata
+	log.Println("Get file metadata")
 	stream3, err := c.GetFileMetaData(context.Background(), &file_transfer.FileName{Name: "1.txt"})
 	if err != nil {
 		log.Fatalf("Error on stream messages: %v", err)
